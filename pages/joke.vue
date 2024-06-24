@@ -31,7 +31,7 @@ export default {
   },
   async mounted() {
     try {
-      const response = await fetch('http://chuck.animalhotels.com/random', {
+      const response = await fetch('http://localhost:8080', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -39,10 +39,8 @@ export default {
       })
       this.joke = await response.json().then((data) => data.joke)
     } catch (e) {
-      console.log(e)
       this.error = "Bład podczcas pobiernia dowcipu"
     } finally {
-      console.log('loaded')
       this.loading = false
     }
   },

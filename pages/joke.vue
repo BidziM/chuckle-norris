@@ -3,9 +3,11 @@
   <div v-else class="h-screen flex justify-center">
     <div class="m-auto mx-[24px]">
       <JokeComp
+        v-if="!error"
         :joke="joke"
         class="max-md:px-2 max-md:py-[115px] px-52 py-32"
       />
+      <ErrorComp v-else :msg="error"/>
       <div class="m-auto mt-5 w-32 h-12">
         <NuxtLink class="w-full" to="/"
           ><ButtonComp msg="Powrót" class="bg-[#ffa200]"
@@ -19,9 +21,9 @@
 export default {
   data: function () {
     return {
-      joke: '',
+      joke: "",
       loading: true,
-      error: Boolean,
+      error: "",
     }
   },
   beforeMount() {
@@ -29,7 +31,7 @@ export default {
   },
   async mounted() {
     try {
-      const response = await fetch('http://localhost:8080', {
+      const response = await fetch('http://chuck.animalhotels.com/random', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -38,6 +40,7 @@ export default {
       this.joke = await response.json().then((data) => data.joke)
     } catch (e) {
       console.log(e)
+      this.error = "Bład podczcas pobiernia dowcipu"
     } finally {
       console.log('loaded')
       this.loading = false

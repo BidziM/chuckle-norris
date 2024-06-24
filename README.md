@@ -1,6 +1,6 @@
 # chuckle-norris
 
-# Jako ze jest problem z corsem to zrobiłem proxy, w glownym folderze jest plik proxy.js ktore wystarczy odpalic z komendy "node proxy.js" pamiętaj ze proxy smiga na porcie 8080
+## Jako ze jest problem z corsem to zrobiłem proxy, w glownym folderze jest plik proxy.js ktore wystarczy odpalic z komendy "node proxy.js" pamiętaj ze proxy smiga na porcie 8080
 
 ## Build Setup
 
